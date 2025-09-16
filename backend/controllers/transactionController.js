@@ -39,7 +39,6 @@ async function makeTransfer(req, res) {
         await user.save();
 
         let debitRecord;
-        let creditRecord;
         if (type === 'transfer' && recipientName) {
             const recipient = await User.findOne({ name: recipientName.trim() });
             if (!recipient) {
@@ -48,13 +47,49 @@ async function makeTransfer(req, res) {
             recipient.balance += numericAmount;
             await recipient.save();
 
-            debitRecord = await Transaction.create({ userId: user._id, type: 'transfer', amount: numericAmount, toUserId: recipient._id, note });
-            creditRecord = await Transaction.create({ userId: recipient._id, type: 'credit', amount: numericAmount, toUserId: user._id, note: `from ${user.name}` });
+            // Write enriched details: from/to ids and names
+            const now = new Date();
+            const dateIST = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            debitRecord = await Transaction.create({
+                userId: user._id,
+                fromUserId: user._id,
+                fromName: user.name,
+                toUserId: recipient._id,
+                toName: recipient.name,
+                type: 'transfer',
+                amount: numericAmount,
+                date: now,
+                dateIST,
+                note,
+            });
         } else if (type === 'bill') {
-            debitRecord = await Transaction.create({ userId: user._id, type: 'bill', amount: numericAmount, merchant: merchant || 'Biller', note });
+            const now = new Date();
+            const dateIST = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            debitRecord = await Transaction.create({
+                userId: user._id,
+                fromUserId: user._id,
+                fromName: user.name,
+                type: 'bill',
+                amount: numericAmount,
+                date: now,
+                dateIST,
+                merchant: merchant || 'Biller',
+                note,
+            });
         } else {
             // Backward compatibility: simple transfer without a specified recipient
-            debitRecord = await Transaction.create({ userId: user._id, type, amount: numericAmount, note });
+            const now = new Date();
+            const dateIST = now.toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+            debitRecord = await Transaction.create({
+                userId: user._id,
+                fromUserId: user._id,
+                fromName: user.name,
+                type,
+                amount: numericAmount,
+                date: now,
+                dateIST,
+                note,
+            });
         }
 
         return res.status(201).json({
@@ -65,8 +100,11 @@ async function makeTransfer(req, res) {
                 type: debitRecord.type,
                 amount: debitRecord.amount,
                 date: debitRecord.date,
+                dateIST: debitRecord.date ? new Date(debitRecord.date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : null,
                 balanceAfter: user.balance,
-                recipientCredited: creditRecord ? { id: creditRecord.userId, amount: creditRecord.amount } : null,
+                recipientCredited: null,
+                from: { id: debitRecord.fromUserId || user._id, name: debitRecord.fromName || user.name },
+                to: debitRecord.toUserId ? { id: debitRecord.toUserId, name: debitRecord.toName || null } : null,
                 merchant: debitRecord.merchant || null,
                 note: debitRecord.note || null,
             },
@@ -82,7 +120,22 @@ async function getMiniStatement(req, res) {
     try {
         const { userId } = req.params;
         const transactions = await Transaction.find({ userId }).sort({ date: -1 }).limit(5);
-        return res.json({ transactions });
+        return res.json({
+            transactions: transactions.map((t) => ({
+                _id: t._id,
+                userId: t.userId,
+                type: t.type,
+                amount: t.amount,
+                date: t.date,
+                dateIST: t.date ? new Date(t.date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : null,
+                fromUserId: t.fromUserId || null,
+                fromName: t.fromName || null,
+                toUserId: t.toUserId || null,
+                toName: t.toName || null,
+                merchant: t.merchant || null,
+                note: t.note || null,
+            })),
+        });
     } catch (err) {
         console.error('Statement error', err);
         return res.status(500).json({ message: 'Server error' });
@@ -90,5 +143,65 @@ async function getMiniStatement(req, res) {
 }
 
 module.exports = { getBalance, makeTransfer, getMiniStatement };
+
+// Get all transactions for a user (not just mini statement)
+async function getAllTransactions(req, res) {
+    try {
+        const { userId } = req.params;
+        const transactions = await Transaction.find({ userId }).sort({ date: -1 });
+        return res.json({
+            transactions: transactions.map((t) => ({
+                _id: t._id,
+                userId: t.userId,
+                type: t.type,
+                amount: t.amount,
+                date: t.date,
+                dateIST: t.dateIST || (t.date ? new Date(t.date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : null),
+                fromUserId: t.fromUserId || null,
+                fromName: t.fromName || null,
+                toUserId: t.toUserId || null,
+                toName: t.toName || null,
+                merchant: t.merchant || null,
+                note: t.note || null,
+            })),
+        });
+    } catch (err) {
+        console.error('Get all transactions error', err);
+        return res.status(500).json({ message: 'Server error' });
+    }
+}
+
+// Get specific transaction by ID
+async function getTransactionById(req, res) {
+    try {
+        const { transactionId } = req.params;
+        const transaction = await Transaction.findById(transactionId);
+        if (!transaction) {
+            return res.status(404).json({ message: 'Transaction not found' });
+        }
+        return res.json({
+            transaction: {
+                _id: transaction._id,
+                userId: transaction.userId,
+                type: transaction.type,
+                amount: transaction.amount,
+                date: transaction.date,
+                dateIST: transaction.dateIST || (transaction.date ? new Date(transaction.date).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : null),
+                fromUserId: transaction.fromUserId || null,
+                fromName: transaction.fromName || null,
+                toUserId: transaction.toUserId || null,
+                toName: transaction.toName || null,
+                merchant: transaction.merchant || null,
+                note: transaction.note || null,
+            },
+        });
+    } catch (err) {
+        console.error('Get transaction by ID error', err);
+        return res.status(500).json({ message: 'Server error' });
+    }
+}
+
+module.exports.getAllTransactions = getAllTransactions;
+module.exports.getTransactionById = getTransactionById;
 
 

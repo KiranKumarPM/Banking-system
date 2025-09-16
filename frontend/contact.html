@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Receipt | Rural Banking</title>
+    <title>Contact | Rural Banking</title>
     <link rel="stylesheet" href="style.css" />
     <script src="languages.js"></script>
 </head>
 
-<body onload="loadReceipt()">
+<body>
     <header class="home-nav">
         <div class="home-nav__inner">
             <div class="home-brand">Rural<span>Bank</span></div>
@@ -19,7 +19,6 @@
                 <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
                 <a href="transaction.html" data-translate="transfers">Transfers</a>
                 <a href="about.html" data-translate="about">About</a>
-                <a href="contact.html" data-translate="contact">Contact</a>
                 <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
                     <option value="en">English</option>
                     <option value="hi">हिन्दी</option>
@@ -29,11 +28,36 @@
             </nav>
         </div>
     </header>
-    <div class="container">
-        <h2 data-translate="receipt">Receipt</h2>
-        <div id="receipt"></div>
-        <a class="btn" href="dashboard.html" data-translate="done">Done</a>
-    </div>
+
+    <main class="container">
+        <h1 data-translate="contact">Contact</h1>
+
+        <div class="card">
+            <h2>Team Details</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>1. Sai Krishna S</h3>
+                    <p class="usn">1SI23IS086</p>
+                </div>
+
+                <div class="team-member">
+                    <h3>2. Puneeth SS</h3>
+                    <p class="usn">1SI23IS070</p>
+                </div>
+
+                <div class="team-member">
+                    <h3>3. SHREYAS M CHAKKI</h3>
+                    <p class="usn">1SI23IS101</p>
+                </div>
+
+                <div class="team-member">
+                    <h3>4. PRERIT G</h3>
+                    <p class="usn">1SI23IS069</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <footer class="home-footer">
         <div class="home-footer__inner">
             <div class="home-brand">Rural<span>Bank</span></div>
@@ -43,14 +67,14 @@
                 <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
                 <a href="transaction.html" data-translate="transfers">Transfers</a>
             </div>
-            <div class="home-footer__copy">© <span id="year-rec"></span> <span
+            <div class="home-footer__copy">© <span id="year-contact"></span> <span
                     data-translate="copyright">RuralBank</span></div>
         </div>
     </footer>
+
     <script>
-        document.getElementById('year-rec').textContent = new Date().getFullYear();
+        document.getElementById('year-contact').textContent = new Date().getFullYear();
     </script>
-    <script src="script.js"></script>
 </body>
 
 </html>

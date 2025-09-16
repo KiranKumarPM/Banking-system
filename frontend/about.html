@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Rural Banking</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="languages.js"></script>
+</head>
+
+<body>
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+                <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1 data-translate="about">About Rural Banking</h1>
+
+        <div class="card">
+            <h2>Problem Statement</h2>
+            <div class="problem-content">
+                <h3>🎯 The Challenge</h3>
+                <p>Rural areas in India face significant banking challenges that limit financial inclusion and economic
+                    growth:</p>
+
+                <h4>📊 Key Problems Identified:</h4>
+                <ul class="problem-list">
+                    <li><strong>Limited Physical Access:</strong> Many rural areas lack nearby bank branches, making
+                        basic banking services inaccessible</li>
+                    <li><strong>Language Barriers:</strong> Traditional banking interfaces are primarily in English,
+                        excluding non-English speaking rural populations</li>
+                    <li><strong>Complex Interfaces:</strong> Existing banking apps are too complex for users with
+                        limited digital literacy</li>
+                    <li><strong>Trust Issues:</strong> Rural users are hesitant to use digital banking due to security
+                        concerns and lack of understanding</li>
+                    <li><strong>Limited Features:</strong> Most banking solutions don't address specific rural needs
+                        like small transactions, bill payments, and local merchant payments</li>
+                    <li><strong>Connectivity Issues:</strong> Poor internet connectivity in rural areas affects banking
+                        app performance</li>
+                </ul>
+
+                <h3>💡 Our Solution</h3>
+                <p>RuralBank addresses these challenges through:</p>
+
+                <h4>🔧 Technical Solutions:</h4>
+                <ul class="solution-list">
+                    <li><strong>Multi-Language Support:</strong> Interface available in Hindi, Telugu, Kannada, and
+                        English</li>
+                    <li><strong>Simplified Design:</strong> Clean, intuitive interface designed for users with limited
+                        digital experience</li>
+                    <li><strong>Offline Capability:</strong> Core features work even with poor connectivity</li>
+                    <li><strong>Local Context:</strong> Features tailored for rural transactions and local merchants
+                    </li>
+                    <li><strong>Security First:</strong> Transparent security measures to build user trust</li>
+                    <li><strong>Mobile-First:</strong> Optimized for smartphones, the primary device in rural areas</li>
+                </ul>
+
+                <h3>🎯 Target Impact</h3>
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <h4>📱 Digital Inclusion</h4>
+                        <p>Bring banking services to underserved rural communities</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>🌐 Language Accessibility</h4>
+                        <p>Remove language barriers through multi-language support</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>💰 Financial Empowerment</h4>
+                        <p>Enable easy money transfers, bill payments, and financial management</p>
+                    </div>
+                    <div class="impact-item">
+                        <h4>🏪 Local Economy</h4>
+                        <p>Support local merchants and small businesses through digital payments</p>
+                    </div>
+                </div>
+
+                <h3>📈 Success Metrics</h3>
+                <ul class="metrics-list">
+                    <li>Increased digital banking adoption in rural areas</li>
+                    <li>Reduced transaction costs for rural users</li>
+                    <li>Improved financial literacy through simplified interfaces</li>
+                    <li>Enhanced economic activity in rural communities</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Technology Stack</h2>
+            <div class="tech-stack">
+                <div class="tech-category">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML5, CSS3, JavaScript (Vanilla)</li>
+                        <li>Responsive Design</li>
+                        <li>Multi-language Support</li>
+                        <li>Progressive Web App Features</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js with Express.js</li>
+                        <li>MongoDB Database</li>
+                        <li>RESTful API Design</li>
+                        <li>JWT Authentication</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Real-time Balance Updates</li>
+                        <li>Transaction History</li>
+                        <li>Bill Payment System</li>
+                        <li>Money Transfer</li>
+                        <li>Receipt Generation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Our Mission</h2>
+            <p class="mission-statement">
+                "To bridge the digital divide in rural India by providing accessible, secure, and user-friendly banking
+                solutions that empower communities and drive financial inclusion."
+            </p>
+        </div>
+    </main>
+
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-about"></span> <span
+                    data-translate="copyright">RuralBank</span></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year-about').textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

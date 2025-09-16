@@ -6,14 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome | Rural Banking</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="languages.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Rural Banking</h1>
-        <p>Simple. Secure. For Everyone.</p>
-        <a class="btn" href="login.html">Start</a>
-    </div>
+    <!-- Top Navigation -->
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" class="active" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="about.html" data-translate="about">About</a>
+                <a href="contact.html" data-translate="contact">Contact</a>
+                <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main class="home-hero">
+        <div class="home-hero__inner">
+            <h1 class="home-hero__title" data-translate="heroTitle">Simple. Secure. For Everyone.</h1>
+            <p class="home-hero__subtitle" data-translate="heroSubtitle">A modern banking experience designed for speed,
+                clarity and trust.</p>
+            <div class="home-hero__actions">
+                <a class="btn primary" href="login.html" data-translate="getStarted">Get Started</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Feature cards -->
+    <section class="home-features">
+        <div class="home-features__grid">
+            <article class="home-card">
+                <h3 data-translate="instantTransfers">Instant Transfers</h3>
+                <p data-translate="instantTransfersDesc">Send money in seconds with detailed receipts and clear
+                    tracking.</p>
+            </article>
+            <article class="home-card">
+                <h3 data-translate="billPayments">Bill Payments</h3>
+                <p data-translate="billPaymentsDesc">Pay utilities and merchants with confidence and transparent
+                    history.</p>
+            </article>
+            <article class="home-card">
+                <h3 data-translate="realtimeBalance">Real-time Balance</h3>
+                <p data-translate="realtimeBalanceDesc">Know your balance at a glance with live updates.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year"></span> <span data-translate="copyright">RuralBank. All
+                    rights reserved.</span></div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>

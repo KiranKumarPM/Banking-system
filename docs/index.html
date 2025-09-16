@@ -9,11 +9,55 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Rural Banking</h1>
-        <p>Simple. Secure. For Everyone.</p>
-        <a class="btn" href="login.html">Start</a>
-    </div>
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" class="active">Home</a>
+                <a href="login.html">Login</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <main class="home-hero">
+        <div class="home-hero__inner">
+            <h1 class="home-hero__title">Simple. Secure. For Everyone.</h1>
+            <p class="home-hero__subtitle">A modern banking experience designed for speed, clarity and trust.</p>
+            <div class="home-hero__actions">
+                <a class="btn primary" href="login.html">Get Started</a>
+            </div>
+        </div>
+    </main>
+    <section class="home-features">
+        <div class="home-features__grid">
+            <article class="home-card">
+                <h3>Instant Transfers</h3>
+                <p>Send money in seconds with clear tracking.</p>
+            </article>
+            <article class="home-card">
+                <h3>Bill Payments</h3>
+                <p>Pay utilities and merchants with confidence.</p>
+            </article>
+            <article class="home-card">
+                <h3>Real-time Balance</h3>
+                <p>Know your balance at a glance.</p>
+            </article>
+        </div>
+    </section>
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transaction.html">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-docs"></span> RuralBank</div>
+        </div>
+    </footer>
+    <script>document.getElementById('year-docs').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

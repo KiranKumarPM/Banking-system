@@ -23,7 +23,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/transactions', transactionRoutes);
 
 // Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/banking_app_db';
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/rural_bank';
 const PORT = process.env.PORT || 5000;
 
 mongoose

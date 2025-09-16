@@ -9,11 +9,35 @@
 </head>
 
 <body onload="loadReceipt()">
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transaction.html">Transfers</a>
+            </nav>
+        </div>
+    </header>
     <div class="container">
         <h2>Receipt</h2>
         <div id="receipt"></div>
         <a class="btn" href="dashboard.html">Done</a>
     </div>
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html">Home</a>
+                <a href="login.html">Login</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transaction.html">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-docs-rec"></span> RuralBank</div>
+        </div>
+    </footer>
+    <script>document.getElementById('year-docs-rec').textContent = new Date().getFullYear();</script>
     <script src="script.js"></script>
 </body>
 

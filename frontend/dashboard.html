@@ -6,25 +6,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Rural Banking</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="languages.js"></script>
 </head>
 
 <body onload="loadDashboard()">
-    <div class="container">
-        <h2>Dashboard</h2>
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" class="active" data-translate="dashboard">Dashboard</a>
+                <a href="about.html" data-translate="about">About</a>
+                <a href="contact.html" data-translate="contact">Contact</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+                <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+    <div class="container" id="dashboardApp" style="display:none">
+        <h2 data-translate="dashboard">Dashboard</h2>
         <div id="userInfo"></div>
         <div class="card">
-            <h3>Balance</h3>
+            <h3 data-translate="balance">Balance</h3>
             <p id="balance">--</p>
         </div>
         <div class="grid">
-            <a class="btn" href="#" onclick="refreshBalance()">Balance</a>
-            <a class="btn" href="transaction.html?type=transfer">Transfer</a>
-            <a class="btn" href="transaction.html?type=bill">Bills</a>
-            <a class="btn" href="#" onclick="loadStatement()">Mini Statement</a>
+            <a class="btn" href="#" onclick="refreshBalance()" data-translate="balance">Balance</a>
+            <a class="btn" href="transaction.html?type=transfer" data-translate="transfer">Transfer</a>
+            <a class="btn" href="transaction.html?type=bill" data-translate="bills">Bills</a>
+            <a class="btn" href="#" onclick="loadStatement()" data-translate="miniStatement">Mini Statement</a>
         </div>
         <ul id="statement"></ul>
-        <a class="link" href="login.html">Logout</a>
+
+        <!-- Transaction History Section -->
+        <div class="card">
+            <h3 data-translate="transactionHistory">Transaction History</h3>
+            <button class="btn" onclick="loadAllTransactions()" data-translate="loadAllTransactions">Load All
+                Transactions</button>
+            <ul id="allTransactions"></ul>
+        </div>
+
+        <!-- Transaction Lookup Section -->
+        <div class="card">
+            <h3 data-translate="lookupTransaction">Lookup Transaction by ID</h3>
+            <input type="text" id="transactionId" data-translate="transactionIdPlaceholder"
+                placeholder="Enter Transaction ID" />
+            <button class="btn primary" onclick="lookupTransaction()" data-translate="lookup">Lookup</button>
+            <div id="transactionDetails"></div>
+        </div>
+        <a class="link" href="#" onclick="logout()" data-translate="logout">Logout</a>
     </div>
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-dash"></span> <span
+                    data-translate="copyright">RuralBank</span></div>
+        </div>
+    </footer>
+    <script>document.getElementById('year-dash').textContent = new Date().getFullYear();</script>
     <script src="script.js"></script>
 </body>
 

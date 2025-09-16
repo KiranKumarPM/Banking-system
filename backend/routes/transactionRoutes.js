@@ -4,6 +4,8 @@ const {
     getBalance,
     makeTransfer,
     getMiniStatement,
+    getAllTransactions,
+    getTransactionById,
 } = require('../controllers/transactionController');
 
 // GET /api/transactions/balance/:userId
@@ -14,6 +16,12 @@ router.post('/transfer', makeTransfer);
 
 // GET /api/transactions/statement/:userId
 router.get('/statement/:userId', getMiniStatement);
+
+// GET /api/transactions/all/:userId
+router.get('/all/:userId', getAllTransactions);
+
+// GET /api/transactions/lookup/:transactionId
+router.get('/lookup/:transactionId', getTransactionById);
 
 module.exports = router;
 

@@ -23,6 +23,131 @@ body {
     z-index: 1;
 }
 
+/* ---------- Home page scoped UI (docs) ---------- */
+.home-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(14, 15, 18, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+.home-nav__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.home-brand {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    font-size: 22px;
+}
+
+.home-brand span {
+    color: #d4af37;
+}
+
+.home-menu a {
+    color: #ececf0;
+    text-decoration: none;
+    margin-left: 18px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.home-menu a.active,
+.home-menu a:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: #f7e7a1;
+}
+
+.home-hero {
+    padding: 64px 20px;
+}
+
+.home-hero__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-hero__title {
+    font-size: 44px;
+    margin: 10px 0 8px;
+}
+
+.home-hero__subtitle {
+    color: #cbd3e1;
+    margin: 0 auto 22px;
+    max-width: 720px;
+}
+
+.home-hero__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-features {
+    padding: 20px;
+}
+
+.home-features__grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.home-card {
+    background: linear-gradient(180deg, rgba(26, 28, 34, 0.85), rgba(18, 20, 26, 0.85));
+    border: 1px solid rgba(192, 166, 66, 0.28);
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+.home-footer {
+    margin-top: 30px;
+    padding: 24px 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.18);
+    background: rgba(14, 15, 18, 0.6);
+}
+
+.home-footer__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+}
+
+.home-footer__links a {
+    color: #e5e7ee;
+    text-decoration: none;
+    margin-right: 14px;
+}
+
+.home-footer__links a:hover {
+    color: #f7e7a1;
+}
+
+.home-footer__copy {
+    color: #b9bfd0;
+    font-size: 14px;
+}
+
 h1,
 h2,
 h3 {

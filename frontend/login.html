@@ -6,24 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login | Rural Banking</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="languages.js"></script>
 </head>
 
 <body>
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" class="active" data-translate="login">Login</a>
+                <a href="about.html" data-translate="about">About</a>
+                <a href="contact.html" data-translate="contact">Contact</a>
+                <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                </select>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h2>Login / Signup</h2>
+        <h2 data-translate="loginSignup">Login / Signup</h2>
         <form id="authForm">
-            <label>Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required />
-            <label>PIN</label>
-            <input type="password" id="pin" placeholder="4-digit PIN" minlength="4" maxlength="6" required />
+            <label data-translate="name">Name</label>
+            <input type="text" id="name" data-translate="namePlaceholder" placeholder="Enter your name" required />
+            <label data-translate="pin">PIN</label>
+            <input type="password" id="pin" data-translate="pinPlaceholder" placeholder="4-digit PIN" minlength="4"
+                maxlength="6" required />
             <div class="row">
-                <button type="button" class="btn" onclick="signup()">Signup</button>
-                <button type="button" class="btn primary" onclick="login()">Login</button>
+                <button type="button" class="btn" onclick="signup()" data-translate="signup">Signup</button>
+                <button type="button" class="btn primary" onclick="login()" data-translate="login">Login</button>
             </div>
         </form>
         <p id="message"></p>
-        <a class="link" href="index.html">Back</a>
+        <a class="link" href="index.html" data-translate="back">Back</a>
     </div>
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-login"></span> <span
+                    data-translate="copyright">RuralBank</span></div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('year-login').textContent = new Date().getFullYear();
+    </script>
     <script src="script.js"></script>
 </body>
 

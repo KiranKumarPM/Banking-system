@@ -6,26 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Transaction | Rural Banking</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="languages.js"></script>
 </head>
 
 <body onload="initTransactionPage()">
+    <header class="home-nav">
+        <div class="home-nav__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <nav class="home-menu">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" class="active" data-translate="transfers">Transfers</a>
+                <a href="about.html" data-translate="about">About</a>
+                <a href="contact.html" data-translate="contact">Contact</a>
+                <select id="languageSelect" onchange="setLanguage(this.value)" class="lang-selector">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी</option>
+                    <option value="te">తెలుగు</option>
+                    <option value="kn">ಕನ್ನಡ</option>
+                </select>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h2 id="txnTitle">Transaction</h2>
+        <h2 id="txnTitle" data-translate="transaction">Transaction</h2>
         <form id="txnForm" onsubmit="submitTransaction(event)">
             <div id="recipientRow" style="display:none;">
-                <label>Recipient Name (for transfers)</label>
-                <input type="text" id="recipientName" placeholder="Enter recipient name" />
+                <label data-translate="recipientName">Recipient Name (for transfers)</label>
+                <input type="text" id="recipientName" data-translate="recipientPlaceholder"
+                    placeholder="Enter recipient name" />
             </div>
             <div id="merchantRow" style="display:none;">
-                <label>Biller/Merchant (for bills)</label>
-                <input type="text" id="merchant" placeholder="e.g., Electricity Board" />
+                <label data-translate="billerMerchant">Biller/Merchant (for bills)</label>
+                <input type="text" id="merchant" data-translate="merchantPlaceholder"
+                    placeholder="e.g., Electricity Board" />
             </div>
-            <label>Amount</label>
-            <input type="number" id="amount" placeholder="Enter amount" min="1" required />
-            <button class="btn primary" type="submit">Confirm</button>
+            <label data-translate="amount">Amount</label>
+            <input type="number" id="amount" data-translate="amountPlaceholder" placeholder="Enter amount" min="1"
+                required />
+            <button class="btn primary" type="submit" data-translate="confirm">Confirm</button>
         </form>
-        <a class="link" href="dashboard.html">Back</a>
+        <a class="link" href="dashboard.html" data-translate="back">Back</a>
     </div>
+    <footer class="home-footer">
+        <div class="home-footer__inner">
+            <div class="home-brand">Rural<span>Bank</span></div>
+            <div class="home-footer__links">
+                <a href="index.html" data-translate="home">Home</a>
+                <a href="login.html" data-translate="login">Login</a>
+                <a href="dashboard.html" data-translate="dashboard">Dashboard</a>
+                <a href="transaction.html" data-translate="transfers">Transfers</a>
+            </div>
+            <div class="home-footer__copy">© <span id="year-txn"></span> <span
+                    data-translate="copyright">RuralBank</span></div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('year-txn').textContent = new Date().getFullYear();
+    </script>
     <script src="script.js"></script>
 </body>
 
