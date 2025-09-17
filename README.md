@@ -22,7 +22,7 @@
   - Signup/Login → creates/validates a `User`
   - Transfer → debits sender, credits recipient, creates two records
   - Bill → debits user, stores `merchant`, creates record
-  - Statement → fetches last 5 `Transaction` entries
+  - Statement → fetches last 5 `Transactions` entries
 - **Why it fits rural users**:
   - Clear layouts, larger UI controls
   - Low cognitive load, simple forms
